@@ -1,34 +1,34 @@
-def es_bisiesto(anio):
-    if (anio % 4 == 0 and anio % 100 != 0) or (anio % 400 == 0):
+def esAñoBisiesto(year):
+    if (year % 4 == 0 and year % 100 != 0) or (year % 400 == 0):
         return True
     return False
 
 
-def dias_en_mes(mes, anio):
-    if mes in [1, 3, 5, 7, 8, 10, 12]:
+def obtenerDiasDelMes(month, year):
+    if month in [1, 3, 5, 7, 8, 10, 12]:
         return 31
-    elif mes in [4, 6, 9, 11]:
+    elif month in [4, 6, 9, 11]:
         return 30
-    elif mes == 2:
-        if es_bisiesto(anio):
+    elif month == 2:
+        if esAñoBisiesto(year):
             return 29
         else:
             return 28
 
 
-# Entrada de datos
-dia = int(input("Ingrese el día: "))
-mes = int(input("Ingrese el mes: "))
-anio = int(input("Ingrese el año: "))
+# Datos ingresados por el usuario
+dia_actual = int(input("Ingrese el día: "))
+mes_actual = int(input("Ingrese el mes: "))
+año_actual = int(input("Ingrese el año: "))
 
-# Incrementar día
-dia += 1
+# Sumar un día
+dia_actual += 1
 
-if dia > dias_en_mes(mes, anio):
-    dia = 1
-    mes += 1
-    if mes > 12:
-        mes = 1
-        anio += 1
+if dia_actual > obtenerDiasDelMes(mes_actual, año_actual):
+    dia_actual = 1
+    mes_actual += 1
+    if mes_actual > 12:
+        mes_actual = 1
+        año_actual += 1
 
-print("La fecha del día siguiente es:", dia, "/", mes, "/", anio)
+print("La fecha siguiente es:", dia_actual, "/", mes_actual, "/", año_actual)
